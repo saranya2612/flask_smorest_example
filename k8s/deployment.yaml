@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ labels:
+   app: test-api
+ name: test-api
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: test-api
+     ver: v1.0
+ template:
+   metadata:
+     labels:
+       app: test-api
+       ver: v1.0
+   spec:
+     containers:
+     - image: PUT-TEST-API-IMAGE-URL-HERE
+       name: test-api
+       ports:
+       - containerPort: 8082

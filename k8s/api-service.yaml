@@ -1,0 +1,15 @@
+piVersion: v1
+kind: Service
+metadata:
+ labels:
+   app: test-api-svc
+ name: test-api-svc
+spec:
+ ports:
+ - port: 8082
+   protocol: TCP
+   targetPort: 8082
+ selector:
+   app: test-api
+   ver: v1.0
+ type: LoadBalancer
