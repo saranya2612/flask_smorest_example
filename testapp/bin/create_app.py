@@ -2,7 +2,10 @@ import logging
 from flask_smorest import Api
 from flask import Flask, Blueprint
 
-from ..sample_app.routes.app_config_object import blp
+import sys
+from pathlib import Path
+sys.path.append(Path(__file__).resolve().parents[1].as_posix())
+from sample_app.routes.app_config_object import blp
 
 app = Flask(__name__)
 app.register(blp)
