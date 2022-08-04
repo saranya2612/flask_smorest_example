@@ -9,4 +9,4 @@ app.register(blp)
 api = Api(app)
 
 if '__name__' == '__main__':
-    app.run(host='localhost', port=8000, debug=True)
+    app.run(host='localhost', port=8082, debug=True)
