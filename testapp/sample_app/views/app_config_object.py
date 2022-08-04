@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from flask.views import MethodView
+from flask.views import View,MethodView
 import marshmallow as ma
 from flask_smorest import Blueprint
 from ..models.thingmodel import Things
@@ -11,7 +11,7 @@ class TestQueryArgsSchema(ma.Schema):
 
 
 @blp.route("/")
-class Welcome(MethodView):
+class Welcome(View):
     @blp.arguments(TestQueryArgsSchema, location="query")
     @blp.response(200)
     def get(self, args):
