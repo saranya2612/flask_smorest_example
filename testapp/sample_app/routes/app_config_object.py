@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask.views import MethodView
 import marshmallow as ma
-from flask_smorest import Api, Blueprint
+from flask_smorest import Blueprint
 from ..models.thingmodel import Things
 blp = Blueprint("thingsapp", "thingsapp", url_prefix="/things", description="Operations on test app")
 
