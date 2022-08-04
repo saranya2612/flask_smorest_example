@@ -12,8 +12,6 @@ class TestQueryArgsSchema(ma.Schema):
 
 @blp.route("/")
 class Welcome(View):
-    @blp.arguments(TestQueryArgsSchema, location="query")
-    @blp.response(200)
     def get(self, args):
         render_template('index.html')
 
