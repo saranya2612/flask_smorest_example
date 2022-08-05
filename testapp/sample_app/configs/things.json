@@ -2,7 +2,7 @@
   "things": [
     {
       "thing1": "car",
-      "thing1": "bus"
+      "thing2": "bus"
     }
   ]
 }
