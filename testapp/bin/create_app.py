@@ -16,5 +16,5 @@ app.config['OPENAPI_VERSION'] = '3.0.2'
 api = Api(app)
 api.register_blueprint(blp)
 
-if '__name__' == '__main__':
+if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8082, debug=True)
