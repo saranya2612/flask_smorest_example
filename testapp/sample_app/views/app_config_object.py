@@ -13,7 +13,7 @@ class TestQueryArgsSchema(ma.Schema):
 @blp.route("/")
 class Welcome(View):
     def get(self, args):
-        render_template('index.html')
+        return render_template('index.html')
 
 @blp.route("/things")
 class Things(MethodView):
