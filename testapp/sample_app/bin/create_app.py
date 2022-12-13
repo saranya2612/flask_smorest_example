@@ -1,12 +1,7 @@
 import logging
 from flask import Flask, Blueprint, render_template
 from flask_smorest import Api
-
-import sys
-from pathlib import Path
-
-sys.path.append(Path(__file__).resolve().parents[1].as_posix())
-from sample_app.views.app_config_object import blp
+from sample_app.views import blueprints
 
 
 def root():
@@ -26,7 +21,8 @@ def create_app():
     app.config['OPENAPI_SWAGGER_UI_URL'] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
 
     api = Api(app)
-    api.register_blueprint(blp)
+    for blp in blueprints:
+        api.register_blueprint(blp)
     app.add_url_rule('/', view_func=root)
 
     return app
