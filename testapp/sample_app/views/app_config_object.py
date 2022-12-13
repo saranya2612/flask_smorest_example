@@ -3,7 +3,7 @@ from flask.views import View,MethodView
 import marshmallow as ma
 from flask_smorest import Blueprint
 from ..models.thingmodel import Things
-blp = Blueprint("thingsapp", "thingsapp", url_prefix="/things", description="Operations on test app")
+blp = Blueprint("thingsapp", "thingsapp", url_prefix="/things", template_folder='templates', description="Operations on test app")
 
 
 class TestQueryArgsSchema(ma.Schema):

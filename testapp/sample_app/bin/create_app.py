@@ -17,7 +17,7 @@ def create_app():
     app = Flask(__name__)
     app.config['API_TITLE'] = 'My API'
     app.config['API_VERSION'] = 'v1'
-    app.config['OPENAPI_VERSION'] = '3.0.2'
+    app.config['OPENAPI_VERSION'] = '3.0.3'
     app.config['OPENAPI_JSON_PATH'] = 'api-spec.json'
     app.config['OPENAPI_URL_PREFIX'] = '/api'
     app.config['OPENAPI_REDOC_PATH'] = "/redoc"
