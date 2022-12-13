@@ -10,10 +10,10 @@ class TestQueryArgsSchema(ma.Schema):
     name = ma.fields.String()
 
 
-@blp.route("/")
-class Welcome(View):
-    def get(self, args):
-        return render_template('index.html')
+# @blp.route("/")
+# class Welcome(View):
+#     def get(self, args):
+#         return render_template('index.html')
 
 @blp.route("/things")
 class Things(MethodView):
