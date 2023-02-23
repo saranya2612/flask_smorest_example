@@ -13,8 +13,7 @@ class TaskQueryArgsSchema(ma.Schema):
 
 
 class TaskDataQueryArgsSchema(ma.Schema):
-    task_id = ma.fields.Int()
-    data = ma.fields.String()
+    task = ma.fields.String()
 
 
 @blp.route("/")
@@ -47,7 +46,7 @@ class TasksActions(MethodView):
 
     @blp.arguments(TaskDataQueryArgsSchema, location="query")
     @blp.response(201)
-    def put(self, task_id, args):
+    def put(self, args, task_id):
         """ Update a task by it's id"""
         print(task_id,args)
         try:

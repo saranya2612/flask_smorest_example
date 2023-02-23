@@ -7,3 +7,4 @@ flask_smorest
 flask
 marshmallow
 Flask-Marshmallow
+pytest
