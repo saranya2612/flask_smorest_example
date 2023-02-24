@@ -24,8 +24,6 @@ class Tasktracker():
         return task
 
     def deletetask(self, task_Id):
-        l = len(self.tasks)
-        print("len", l)
         for idx in range(l):
             if self.tasks[idx]['task_Id'] == task_Id:
                 del self.tasks[idx]
