@@ -10,8 +10,7 @@ class Tasktracker():
         for task in self.tasks:
             if task['task_Id'] == task_Id:
                 return task
-        else:
-            return "Item not in list"
+
 
     def createtask(self, data):
         task = data
@@ -25,9 +24,21 @@ class Tasktracker():
         return task
 
     def deletetask(self, task_Id):
-        task = self.gettask(task_Id)
-        print(task)
-        self.tasks.remove(task)
+        l = len(self.tasks)
+        print("len", l)
+        for idx in range(l):
+            if self.tasks[idx]['task_Id'] == task_Id:
+                del self.tasks[idx]
+                return True
+        else:
+            return False
+
+    def lookup(self, task):
+        for t in self.tasks:
+            if task == t['task']:
+                return t['task_id']
+        else:
+            return None
 
 
 task_obj = Tasktracker()

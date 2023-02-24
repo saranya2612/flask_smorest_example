@@ -9,7 +9,7 @@ blp = Blueprint("Tasks", "tasks", url_prefix="/tasks", template_folder='template
 
 class TaskQueryArgsSchema(ma.Schema):
     task = ma.fields.String()
-    #task_id = ma.fields.Int()
+    # task_id = ma.fields.Int()
 
 
 class TaskDataQueryArgsSchema(ma.Schema):
@@ -38,43 +38,32 @@ class TasksActions(MethodView):
         """Get a task by it's id"""
         try:
             item = task_obj.gettask(task_id)
-        except ItemNotFoundError:
-            abort(404, message="Item not found.")
-
-        else:
-            return item
-
-    @blp.arguments(TaskDataQueryArgsSchema, location="query")
-    @blp.response(201)
-    def put(self, args, task_id):
-        """ Update a task by it's id"""
-        print(task_id,args)
-        try:
-            item = task_obj.gettask(task_id)
             print(item)
         except ItemNotFoundError:
             abort(404, message="Item not found.")
         else:
-            return item.update(args)
+            return item if item else abort(404, message=f"task_id - {task_id} - Item not found.")
 
-
-    # @blp.arguments(TaskQueryArgsSchema, location="query")
-    # @blp.response(201)
-    # def put(self, task_id, task):
-    #     """ Update a task by it's id"""
-    #     try:
-    #         item = task_obj.gettask(task_id)
-    #     except ItemNotFoundError:
-    #         abort(404, message="Item not found.")
-    #     else:
-    #         item.update({'task': task})
-    #         return item
+    @blp.arguments(TaskDataQueryArgsSchema, location="query")
+    @blp.response(201)
+    def put(self, args, task_id: int):
+        """ Update a task by it's id"""
+        print(args, task_id)
+        try:
+            item = task_obj.gettask(task_id)
+        except ItemNotFoundError:
+            abort(404, message="Item not found.")
+        else:
+            return item.update(args) if item else abort(404, message=f"task_id - {task_id} - Item not found.")
 
     @blp.response(204)
     def delete(self, task_id):
         """Delete a task"""
         try:
-            task_obj.deletetask(task_id)
+            #task_obj.deletetask(task_id)
+            deletion_status = task_obj.deletetask(task_id)
+            if not deletion_status:
+                abort(404, message=f"task_id - {task_id} - Item not found.")
         except ItemNotFoundError:
             abort(404, message="Item not found.")
 
