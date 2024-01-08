@@ -9,6 +9,7 @@ def root():
 
 
 def create_app():
+    #app = Flask(__name__, static_folder='templates/')
     app = Flask(__name__)
     app.config['API_TITLE'] = 'My API'
     app.config['API_VERSION'] = 'v1'
